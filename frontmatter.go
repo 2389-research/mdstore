@@ -12,6 +12,10 @@ import (
 // Returns the raw YAML string (between --- delimiters) and the body text.
 // If no frontmatter found, returns empty yaml and full content as body.
 func ParseFrontmatter(content string) (yamlStr string, body string) {
+	// Normalize \r\n line endings to \n for consistent parsing
+	content = strings.ReplaceAll(content, "\r\n", "\n")
+	// Remove any stray \r characters
+	content = strings.ReplaceAll(content, "\r", "\n")
 	trimmed := strings.TrimSpace(content)
 
 	if !strings.HasPrefix(trimmed, "---") {
