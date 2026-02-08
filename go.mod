@@ -1,4 +1,4 @@
-module github.com/harper/suite/mdstore
+module github.com/2389-research/mdstore
 
 go 1.24
 
